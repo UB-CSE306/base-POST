@@ -43,9 +43,9 @@ Here are the commands you must support:
 A basic FILTER is an ‘in’ filter, of the form <keyword> in `<field>`.  A record satisfies this filter if it contains the indicated keyword in the indicated field. For example, here are three sample commands using ‘filter’:
 
 ```
-filter “golf” in REASON
-filter “golf ball” in REASON
-filter “2017” in DATE
+filter "golf" in REASON
+filter "golf ball" in REASON
+filter "2017" in DATE
 ```
 
 Another basic FILTER is a ‘notin’ filter, of the form `<keyword> notin <field>`.  A record satisfies this filter if it does NOT contain the indicated keyword in the indicated field.
@@ -61,6 +61,12 @@ There are two special `<field>` specifications: ANY and ALL:
 * `<keyword> notin ALL` is matched if there is no field of the record that the `<keyword>` appears in.
 
 FILTERs can be combined with OR.  If F1 and F2 are filters, so is F1 OR F2.  A record matches F1 OR F2 if it matches F1 or if it matches F2.
+
+```
+filter "golf" in REASON
+filter "golf ball" in REASON
+filter "2017" in DATE OR "2018" in DATE
+```
 
 Although FILTERs cannot be combined with AND, applying two filters one after the other achieves the same effect, as in filter F1 followed by filter F2.
 
@@ -94,6 +100,45 @@ must save the following in a file named “oddball.xml”:
   <COMPANY_RELEASE_LINK>https://www.fda.gov/Safety/Recalls/ucm554452.htm</COMPANY_RELEASE_LINK>
   <PHOTOS_LINK>   </PHOTOS_LINK>
 </PRODUCT>
+```
+
+The ```<SEARCH>``` part for the following
+
+```
+filter "golf" in REASON
+filter "golf ball" notin REASON
+filter "2017" in ANY or "2018" notin ALL
+```
+
+could be as shown below.  The spacing helps readability, but does not affect interpretation.  Opening tags in XML can have attribute-value pairs.  This shows the specification of a value for the ```type``` attribute for three of the filters.  If ```type``` is not specified it is assumed to be ```in```.
+
+```xml
+<SEARCH>
+  <BASE>RecallsDataSet2015-2017.xml</BASE>
+  <FILTER>
+    <REASON>
+      golf
+    </REASON>
+  </FILTER>
+  <FILTER type="notin">
+    <REASON>
+      golf ball
+    </REASON>
+  </FILTER>
+  <OR>
+    <FILTER type="in">
+      <ANY>
+        2017
+      </ANY>
+    </FILTER>
+    <FILTER type="notin">
+      <ALL>
+        golf
+      </ALL>
+    </FILTER>
+  </OR>
+</SEARCH>
+
 ```
 
 If the program is started with this file as an argument it must read the RecallsDataSet2015-2017.xml file, and then perform the two filter operations.  A ‘reset’ operation must reset the current dataset to what was originally read from the base file, RecallsDataSet2015-2017.xml.
