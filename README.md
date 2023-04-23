@@ -145,7 +145,7 @@ If the program is started with this file as an argument it must read the Recalls
 
 If there is already a file named `<filename>.xml` in the filesystem then the program does not save the dataset to file, but rather announces to the user that the file already exists and instructs them to use overwrite `<filename>` instead.
 
-* `overwrite <filename>` – similar to save, expect it overwrites an existing file with the name `<filename>.xml`. If there is NOT already a file named `<filename>.xml` in the filesystem then the program does not save the dataset to file, but rather announces to the user that no such file exists and instructs them to use save `<filename>` instead.
+* `overwrite <filename>` – similar to save, expect it overwrites an existing file with the name `<filename>.xml`. If there is NOT already a file named `<filename>.xml` in the filesystem then the program does not save the dataset to file, but rather announces to the user that no such file exists and instructs them to use `save <filename>` instead.
 
 * `count` – prints the number of records in the current dataset, but does not change the current dataset.
 
@@ -164,6 +164,3 @@ Post questions in Piazza.
 
 ## Assessment
 You can view the rubric for the POST project in UBLearns.
-
-## Feedback
-Please complete the [POST Feedback Form](https://docs.google.com/forms/d/e/1FAIpQLSfTn8IhzLfreIhDmhZnl_7LgHiUYKL34vG8rk5dHbwoPpV-xQ/viewform?usp=sf_link).
