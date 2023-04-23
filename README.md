@@ -8,7 +8,7 @@ This project is due no later than the last day of classes at 11:59 PM
 
 Write a C program that reads FDA recall data from an XML file (whose filename is specified on the command line), and then enters an interactive mode in which the commands described below are supported.  The command mode prompt must be “? ”. The data must be stored in a data structure of your choosing.
 
-The [FDA Recalls Data Sets](https://www.fda.gov/AboutFDA/Transparency/OpenGovernment/ucm225433.htm) is also available locally on timberlake.cse.buffalo.edu in the directory `/projects/alphonce/Data/FDA`.
+The [FDA Recalls Data Sets](https://www.fda.gov/AboutFDA/Transparency/OpenGovernment/ucm225433.htm) is also available locally on `cerf.cse.buffalo.edu` in the directory `/shared/projects/alphonce/Data/FDA`.
 
 The XML file contains records of the following form:
 
